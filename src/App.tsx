@@ -1,7 +1,7 @@
 import styles from './styles/app.module.css'
 import { FileSelect } from './lib/components/fileSelect/fileSelect'
 import csvWorker from './lib/workers/csvWorker.ts?worker'
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useCsvProcessor } from './lib/hooks/useCsvProcessor';
 import { Statscard } from './Statscard';
 import { CSVProcessor } from './lib/utils/csvProcessor';
@@ -13,10 +13,6 @@ function App() {
   const { data, isLoading, error } = useCsvProcessor(files, csvWorker);
   const [selectedFile, setSelectedFile] = useState<CSVProcessor | undefined>(undefined);
 
-  useEffect(() => {
-    console.log(selectedFile);
-  }, [selectedFile]);
-  
   function handleFileChange(files: File[]) {
     setFiles(files);
   }
