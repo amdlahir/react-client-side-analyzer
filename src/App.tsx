@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { useCsvProcessor } from './lib/hooks/useCsvProcessor';
 import { Statscard } from './Statscard';
 import { CSVProcessor } from './lib/utils/csvProcessor';
-import { ColumnStatsChart } from './components/ColumnStatsChart';
+import { ColumnStatsChart } from './lib/components/columnstatsChart/ColumnStatsChart';
 export type CsvWorker = typeof csvWorker;
 
 function App() {

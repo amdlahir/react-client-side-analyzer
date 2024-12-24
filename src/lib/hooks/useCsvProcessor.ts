@@ -12,13 +12,13 @@ export function useCsvProcessor(files: File[], csvWorker: CsvWorker)  {
         new csvWorker(),
         file, 
         (data) => {
-          console.log(data);
+          console.log(data); // TODO: remove
         }, 
         (data) => {
-          console.log(data);
+          console.log(data); // TODO: can be used to enhance the UI with progress bar
         }, 
         (error) => {
-          console.log(error);
+          console.log(error); // TODO: remove
         }
       ));
       await Promise.allSettled(processors.map(processor => processor.processFile()));

@@ -1,7 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ErrorBar, Tooltip } from 'recharts';
-import { type ColumnStats } from '../types';
+import { type ColumnStats } from '../../../types';
 import styles from './ColumnStatsChart.module.css';
-import { Button, ButtonVariant } from '../lib/components/button';
+import { Button, ButtonVariant } from '../button';
 
 interface ColumnStatsChartProps {
   columnStats: Record<string, ColumnStats>;
@@ -16,7 +16,6 @@ export function ColumnStatsChart({ columnStats, onClose }: ColumnStatsChartProps
       standardDeviation: stats.dataType === 'number' ? stats.stdDev : null
     }));
 
-  console.log(chartData);
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
