@@ -1,0 +1,70 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --color-primary-50: #f1f5fd;
+  --color-primary-100: #e0e9f9;
+  --color-primary-200: #c9d9f4;
+  --color-primary-300: #a3c1ed;
+  --color-primary-400: #78a0e2;
+  --color-primary-500: #5880d9;
+  --color-primary-600: #4365cd;
+  --color-primary-700: #3b55c0;
+  --color-primary-800: #344599;
+  --color-primary-900: #2f3d79;
+  --color-primary-950: #20274b;
+
+
+  --color-secondary-50: #f7f7f8;
+  --color-secondary-100: #efeef0;
+  --color-secondary-200: #dbdadd;
+  --color-secondary-300: #bcb9c0;
+  --color-secondary-400: #97939d;
+  --color-secondary-500: #7a7582;
+  --color-secondary-600: #645f6a;
+  --color-secondary-700: #524e56;
+  --color-secondary-800: #464349;
+  --color-secondary-900: #3d3a40;
+  --color-secondary-950: #2d2b2f;
+  --color-secondary-1000: #202020;
+
+  
+  --color-black: #010209;
+  --color-white: #ffffff;
+  --color-danger: #f73939;
+  --color-success: #22c55e;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

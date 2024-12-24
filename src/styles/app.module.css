@@ -1,0 +1,59 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: 100vw;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.fileSelectContainer {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  gap: 1rem;
+}
+
+.fileSelect {
+  width: 30%;
+  height: 200px
+}
+
+.statsContainer {
+  display: flex;
+  box-sizing: border-box;
+  padding: 5px;
+  width: calc(70% - 3rem);
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.chartContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.screenOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+
+

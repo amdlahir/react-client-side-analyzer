@@ -1,0 +1,25 @@
+.container {
+  padding: 1.5rem 2.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  color: #666;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--color-secondary-950)
+}

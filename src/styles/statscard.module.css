@@ -1,0 +1,51 @@
+.statscard {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.statsbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-primary-300);
+  color: var(--color-primary-950);
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.statsbarButton {
+  padding: 0px;
+}
+
+.btnContainer {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.statsHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+
+}
+
+.table {
+  width: 100%;
+}
+
+.table td, .table th {
+  padding: 5px 20px 5px 0;
+  border-bottom: 1px solid white;
+}
+
+.table thead {
+  background-color: var(--color-primary-300);
+  color: var(--color-primary-950);
+}
