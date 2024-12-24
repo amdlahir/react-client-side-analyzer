@@ -16,7 +16,7 @@ export function ColumnStatsChart({ columnStats, onClose }: ColumnStatsChartProps
       standardDeviation: stats.dataType === 'number' ? stats.stdDev : null
     }));
 
-    
+  console.log(chartData);
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
@@ -45,7 +45,20 @@ export function ColumnStatsChart({ columnStats, onClose }: ColumnStatsChartProps
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
-        <Tooltip />
+        <Tooltip
+          content={({ active, payload, label }) => {
+            if (active && payload && payload[0] && payload[0].value) {
+              return (
+                <div className={styles.customTooltip}>
+                  <p>{`${label}`}</p>
+                  <p>{`Mean: ${payload[0].value.toFixed(2)}`}</p>
+                  <p>{`Std Dev: ${payload[0].payload.standardDeviation.toFixed(2)}`}</p>
+                </div>
+              );
+            }
+            return null;
+          }}
+        />
         <Bar
           dataKey="mean"
           fill="#40a0a0"

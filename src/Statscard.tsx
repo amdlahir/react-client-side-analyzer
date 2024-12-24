@@ -85,13 +85,13 @@ export function Statscard({data, onPrimaryBtnClick, onSecondaryBtnClick}: Statsc
           pill
           text="View Chart"
         />
-        <Button
+        {/* <Button
           size="sm"
           onClick={onSecondaryBtnClick}
           variant={ButtonVariant.SECONDARY}
           pill
-          text="View Chart"
-        />
+          text="Delete"
+        /> */}
       </div>
     </figure>
     );
