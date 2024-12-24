@@ -48,11 +48,11 @@ function App() {
               multiple
             />
             <FileSelect.DropZone>
-              {isLoading ? <p className="text-white">Please wait while we process your files...</p> : (
-                <p className="text-white">
+              {isLoading ? <p>Please wait while we process your files...</p> : (
+                <p>
                   Add csv file
                   <br />
-                  <span className="text-[0.8rem] text-secondary-300">
+                  <span>
                   (click or drag & drop files here)
                   </span>
                 </p>
