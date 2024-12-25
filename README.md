@@ -10,6 +10,4 @@ Launch `http://localhost:3000`
 
 Launch `http://localhost:51204`
 
-## TODO
-- Serialize processor data for local storage
-- Error handlings
+Find test csv files under public sub folder.
