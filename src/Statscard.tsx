@@ -104,13 +104,17 @@ export function Statscard({data, onPrimaryBtnClick, onSecondaryBtnClick}: Statsc
           pill
           text="View Chart"
         />
-        {/* <Button
+        <Button
           size="sm"
           onClick={onSecondaryBtnClick}
-          variant={ButtonVariant.SECONDARY}
+          variant={ButtonVariant.OUTLINE}
           pill
           text="Delete"
-        /> */}
+          style={{
+            borderColor: 'var(--color-danger)',
+            color: 'var(--color-danger)',
+          }}
+        />
       </div>
     </figure>
     );

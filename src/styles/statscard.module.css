@@ -4,6 +4,7 @@
   width: 100%;
   box-sizing: border-box;
   padding: 10px;
+  margin-bottom: 40px;
 }
 
 .statsbar {
@@ -25,7 +26,7 @@
 .btnContainer {
   margin-top: 1rem;
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .statsHeading {

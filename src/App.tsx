@@ -30,6 +30,10 @@ function App() {
     setSelectedFile(undefined);
   }
 
+  function handleDeleteFile(file: File) {
+    setFiles(prevFiles => prevFiles.filter(f => f.name !== file.name));
+  }
+
   return (
     <React.Fragment>
       {selectedFile ?  (
@@ -69,13 +73,17 @@ function App() {
                   key={fileData.processorId} 
                   data={fileData} 
                   onPrimaryBtnClick={() => setSelectedFile(fileData)}
-                  onSecondaryBtnClick={() => setSelectedFile(fileData)}
+                  onSecondaryBtnClick={() => handleDeleteFile(fileData.file)}
                 />
               )
             ))}
             {data && data.length > 0 ? (
-              <div>
-                <Button pill variant={ButtonVariant.SECONDARY} size="sm" text="Clear" onClick={() => setFiles([])} />
+              <div style={{ display: 'flex', justifyContent: 'end', marginTop: '3rem', width: '100%' }}>
+                <Button pill 
+                  variant={ButtonVariant.SECONDARY}
+                  size="md"
+                  text="Clear All"
+                  onClick={() => setFiles([])} />
               </div>
             ) : null}
           </section>
