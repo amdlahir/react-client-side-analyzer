@@ -9,6 +9,7 @@
 }
 
 .fileSelectContainer {
+  position: relative;
   display: flex;
   align-items: start;
   justify-content: start;
@@ -19,6 +20,19 @@
 .fileSelect {
   width: 30%;
   height: 200px
+}
+
+.loadingContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 100%;
+  z-index: 1000;
 }
 
 .statsContainer {
