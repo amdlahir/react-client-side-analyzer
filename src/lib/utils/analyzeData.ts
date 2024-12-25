@@ -30,10 +30,10 @@ export function analyzeData(data: ReturnType<typeof csvParse<string>>): ColumnsM
 
   const stats: Record<string, ColumnStats> = {};
   const columns = Object.keys(data[0]);
+  let totalRecords = 0;
 
-  columns.forEach(column => {
+  columns.forEach((column, index) => {
     let emptyValuesCount = 0;
-    let totalRecords = 0;
     const stringCountMap = new Map<string, number>();
     const values: (number | string)[] = [];
     data.forEach(row => {
@@ -50,6 +50,7 @@ export function analyzeData(data: ReturnType<typeof csvParse<string>>): ColumnsM
       } catch (error) {
         throw new Error(`Unable to determine data type for column ${column} - ${error}`);
       }
+      if (index > 0) return;
       totalRecords++;
     });
     const topStrings = Array.from(stringCountMap.entries())

@@ -11,10 +11,16 @@ type StatscardProps = {
 
 export function Statscard({data, onPrimaryBtnClick, onSecondaryBtnClick}: StatscardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const columnsData = Object.entries(data.stats);
+  
   if (!isExpanded) {
     return (
       <div className={styles.statsbar}>
-        <h3>File: {data.file.name}</h3>
+        <h3><span style={{fontWeight: 'normal'}}>File:</span> {data.file.name} <span style={{
+          fontSize: '1rem',
+          marginLeft: '0.5rem',
+          color: 'var(--color-secondary-900)'
+          }}>({columnsData[0][1].totalRecords} records)</span></h3>
         <Button 
           size="sm"
           onClick={() => setIsExpanded(true)}
@@ -33,7 +39,11 @@ export function Statscard({data, onPrimaryBtnClick, onSecondaryBtnClick}: Statsc
     <figure className={styles.statscard}>
       <figcaption>
         <div className={styles.statsHeading}>
-          <h3>File: {data.file.name}</h3>
+          <h3><span style={{fontWeight: 'normal'}}>File:</span> {data.file.name} <span style={{
+          fontSize: '1rem',
+          marginLeft: '0.5rem',
+          color: 'var(--color-white)'
+          }}>({columnsData[0][1].totalRecords} records)</span></h3>
           <Button
             size="sm"
             onClick={() => setIsExpanded(false)}
@@ -52,16 +62,25 @@ export function Statscard({data, onPrimaryBtnClick, onSecondaryBtnClick}: Statsc
             <tr style={{ textAlign: 'left' }}>
               <th>Column Name</th>
               <th>Data Type</th>
+              <th>Top 5 Strings</th>
               <th>No. of Empty Values</th>
               <th>Mean</th>
               <th>Standard Deviation</th>
             </tr>
           </thead>
           <tbody>
-            {Object.entries(data.stats).map(([columnName, columnStats]) => (
+            {columnsData.map(([columnName, columnStats]) => (
               <tr key={columnName}>
                 <td>{columnName}</td>
                 <td>{columnStats.dataType}</td>
+                {columnStats.dataType === 'string' ? (
+                  <td>{columnStats.topStrings.map((string, index) => 
+                    <span key={string}>{string}{index < columnStats.topStrings.length - 1 ? ', ' : ''} </span>)}
+                  </td>
+                ):(
+                  <td>N/A</td>
+                )
+                }
                 <td>{columnStats.emptyValuesCount}</td>
                 {columnStats.dataType === 'number' ? (
                   <>

@@ -26,7 +26,7 @@ describe('Application', () => {
     mocks.mockUseQueriesHook.mockReturnValue(mockResults)
     render(<App />)
     for (const result of mockResults) {
-      expect(screen.getByText(`File: ${result.data.file.name}`)).toBeInTheDocument();
+      expect(screen.getByText(new RegExp(`${result.data.file.name}`))).toBeInTheDocument();
     }
     const viewStatsButtons = screen.getAllByText(/view stats/i)
     expect(viewStatsButtons.length).toBe(mockResults.length);

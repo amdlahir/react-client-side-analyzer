@@ -13,21 +13,27 @@ export const mockCsvProcessorData1 = new MockCSVProcessor(
 mockCsvProcessorData1.stats = {
   "col_1": {
       "dataType": "string",
-      "emptyValuesCount": 0
+      "emptyValuesCount": 0,
+      "totalRecords": 10,
+      "topStrings": ["a", "b", "c"],
   },
   "col_2": {
       "dataType": "string",
-      "emptyValuesCount": 10
+      "emptyValuesCount": 10,
+      "totalRecords": 10,
+      "topStrings": ["a", "b", "c"],
   },
   "col_3": {
       "dataType": "number",
       "emptyValuesCount": 0,
+      "totalRecords": 10,
       "mean": 100,
       "stdDev": 200
   },
   "col_4": {
       "dataType": "number",
       "emptyValuesCount": 0,
+      "totalRecords": 10,
       "mean": 300,
       "stdDev": 400
   }
@@ -43,11 +49,14 @@ export const mockCsvProcessorData2 = new MockCSVProcessor(
 mockCsvProcessorData2.stats = {
   "col_A": {
       "dataType": "string",
-      "emptyValuesCount": 0
+      "emptyValuesCount": 0,
+      "totalRecords": 10,
+      "topStrings": ["a", "b", "c"],
   },
   "col_B": {
       "dataType": "number",
       "emptyValuesCount": 0,
+      "totalRecords": 10,
       "mean": 10,
       "stdDev": 20
   },

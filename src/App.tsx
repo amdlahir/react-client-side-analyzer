@@ -20,7 +20,10 @@ function App() {
     .map(result => result.data);
 
   function handleFileChange(files: File[]) {
-    setFiles(prevFiles => [...prevFiles, ...files]);
+    setFiles(prevFiles => {
+      const newFiles = files.filter(file => !prevFiles.some(existingFile => existingFile.name === file.name));
+      return [...prevFiles, ...newFiles];
+    });
   }
 
   function handleCloseChart() {
@@ -50,7 +53,7 @@ function App() {
             <FileSelect.DropZone>
               {isLoading ? <p>Please wait while we process your files...</p> : (
                 <p>
-                  Add csv file
+                  Add CSV files
                   <br />
                   <span>
                   (click or drag & drop files here)

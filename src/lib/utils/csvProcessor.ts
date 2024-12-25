@@ -47,7 +47,7 @@ export class CSVProcessor {
       throw new Error('Worker is not initialized');
     }
     this.worker.onmessage = (e) => {
-      const { type, data, error } = e.data;
+      const { type, data, error } = e.data; // TODO: strict typing
       
       switch (type) {
         case 'complete':
