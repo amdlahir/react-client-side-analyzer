@@ -13,6 +13,8 @@ export default defineConfig({
     globals: true,
     setupFiles: './src/test/setup.ts',
     include: ['**/*.test.ts', '**/*.test.tsx'],
-    exclude: ['node_modules', 'dist', '.idea', '.git', '.cache']
+    exclude: ['node_modules', 'dist', '.idea', '.git', '.cache'],
+    silent: false,
+    console: true,
   }
 } as UserConfig)

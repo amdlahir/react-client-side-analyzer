@@ -1,6 +1,6 @@
 import { ColumnsMetadata } from "../../types";
 
-type Status = 'pending' | 'processing' | 'complete' | 'cancelled' | 'error';
+export type Status = 'pending' | 'processing' | 'complete' | 'cancelled' | 'error';
 
 export class CSVProcessor {
   private id: string
