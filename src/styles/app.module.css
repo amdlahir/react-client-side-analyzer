@@ -55,5 +55,20 @@
   z-index: 1000;
 }
 
+@media screen and (max-width: 1280px) {
+  .fileSelectContainer {
+    flex-direction: column;
+  }
+  .fileSelect {
+    width: calc(100% - 40px);
+    height: 100px;
+  }
+  .statsContainer {
+    width: calc(100% - 40px);
+  }
+}
+
+
+
 
 

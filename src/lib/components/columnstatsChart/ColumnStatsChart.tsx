@@ -2,6 +2,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ErrorBar, Tooltip } from 'r
 import { type ColumnStats } from '../../../types';
 import styles from './ColumnStatsChart.module.css';
 import { Button, ButtonVariant } from '../button';
+import { useResponsiveScreen } from '../../hooks/useResponsiveScreen';
 
 interface ColumnStatsChartProps {
   columnStats: Record<string, ColumnStats>;
@@ -15,6 +16,11 @@ export function ColumnStatsChart({ columnStats, onClose }: ColumnStatsChartProps
       mean: stats.dataType === 'number' ? stats.mean : null,
       standardDeviation: stats.dataType === 'number' ? stats.stdDev : null
     }));
+  const width = useResponsiveScreen();
+  const isTablet = width > 768 && width < 1280;
+
+  console.log(width);
+  console.log(isTablet);
 
   return (
     <div className={styles.container}>
@@ -31,8 +37,8 @@ export function ColumnStatsChart({ columnStats, onClose }: ColumnStatsChartProps
         }} />
       </div>
       <BarChart
-        width={1400}
-        height={700}
+        width={isTablet ? 700 : 1400}
+        height={isTablet ? 500 : 700}
         data={chartData}
         margin={{
           top: 20,
