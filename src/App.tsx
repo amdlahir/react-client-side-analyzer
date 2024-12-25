@@ -8,6 +8,7 @@ import { CSVProcessor } from './lib/utils/csvProcessor';
 import { ColumnStatsChart } from './lib/components/columnstatsChart/ColumnStatsChart';
 import { Button, ButtonVariant } from './lib/components/button';
 import { useStatePersistence } from './lib/hooks/useStatePersistence';
+import { LoadingSpinner } from './lib/components/loadingSpinner/LoadingSpinner';
 export type CsvWorker = typeof csvWorker;
 
 function App() {
@@ -61,12 +62,17 @@ function App() {
               multiple
             />
             <FileSelect.DropZone>
-              {isLoading ? <p>Please wait while we process your files...</p> : (
+              {isLoading ? (
+                <div>
+                  <LoadingSpinner size="lg" />
+                  <p>Please wait while we process your files...</p>
+                </div>
+              ) : (
                 <p>
                   Add CSV files
                   <br />
                   <span>
-                  (click or drag & drop files here)
+                    (click or drag & drop files here)
                   </span>
                 </p>
               )}
