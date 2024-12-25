@@ -14,7 +14,8 @@ describe('analyzeData', () => {
       dataType: 'number',
       emptyValuesCount: 0,
       mean: 2,
-      stdDev: 1
+      stdDev: 1,
+      totalRecords: 3,
     });
   });
 
@@ -29,6 +30,8 @@ c`;
     expect(result.text).toEqual({
       dataType: 'string',
       emptyValuesCount: 0,
+      totalRecords: 3,
+      topStrings: ['a', 'b', 'c'],
     });
   });
 
@@ -65,13 +68,47 @@ a,1
     expect(result.mixed).toEqual({
       dataType: 'string',
       emptyValuesCount: 0,
+      totalRecords: 3,
+      topStrings: ['a'],
     });
 
     expect(result.pure_num).toEqual({
       dataType: 'number',
       emptyValuesCount: 0,
       mean: 2,
-      stdDev: 1
+      stdDev: 1,
+      totalRecords: 3,
+    });
+  });
+
+  it('should handle top strings', () => {
+    const csvString = `text
+c
+c
+c
+b
+b
+a
+a
+d
+d
+d
+d
+d
+e
+f
+f
+g
+g
+g
+`;
+    const data = csvParse(csvString);
+    const result = analyzeData(data);
+    expect(result.text).toEqual({
+      dataType: 'string',
+      emptyValuesCount: 0,
+      totalRecords: 18,
+      topStrings: ['d','c','g','b','a'],
     });
   });
 });

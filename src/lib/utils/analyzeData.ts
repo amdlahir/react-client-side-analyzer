@@ -33,6 +33,8 @@ export function analyzeData(data: ReturnType<typeof csvParse<string>>): ColumnsM
 
   columns.forEach(column => {
     let emptyValuesCount = 0;
+    let totalRecords = 0;
+    const stringCountMap = new Map<string, number>();
     const values: (number | string)[] = [];
     data.forEach(row => {
       const columnStringValue = row[column].trim();
@@ -40,12 +42,20 @@ export function analyzeData(data: ReturnType<typeof csvParse<string>>): ColumnsM
         emptyValuesCount++;
         return;
       }
+      if (determineDataType(columnStringValue) === 'string') {
+        stringCountMap.set(columnStringValue, (stringCountMap.get(columnStringValue) || 0) + 1);
+      }
       try {
         values.push(determineDataType(columnStringValue) === 'number' ? +columnStringValue : columnStringValue);
       } catch (error) {
         throw new Error(`Unable to determine data type for column ${column} - ${error}`);
       }
+      totalRecords++;
     });
+    const topStrings = Array.from(stringCountMap.entries())
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 5)
+      .map(([value]) => value);
     const dataType = determineDataType(rowWithNoEmptyValues[column]);
     try {
         if (dataType === 'number') {
@@ -54,11 +64,14 @@ export function analyzeData(data: ReturnType<typeof csvParse<string>>): ColumnsM
           emptyValuesCount,
           mean: mathjs.mean(values as number[]),
           stdDev: mathjs.std(values as number[]) as unknown as number,
+          totalRecords,
         }
       } else {
         stats[column] = {
           dataType,
           emptyValuesCount,
+          totalRecords,
+          topStrings,
         }
       }
     } catch (error) {
