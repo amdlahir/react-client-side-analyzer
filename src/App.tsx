@@ -7,12 +7,13 @@ import { Statscard } from './Statscard';
 import { CSVProcessor } from './lib/utils/csvProcessor';
 import { ColumnStatsChart } from './lib/components/columnstatsChart/ColumnStatsChart';
 import { Button, ButtonVariant } from './lib/components/button';
+import { useStatePersistence } from './lib/hooks/useStatePersistence';
 export type CsvWorker = typeof csvWorker;
 
 function App() {
-  const [files, setFiles] = useState<File[]>([]);
-  const results = useCsvProcessor(files, csvWorker);
-  const [selectedFile, setSelectedFile] = useState<CSVProcessor | undefined>(undefined);
+  const [selectedFile, setSelectedFile] = useState<CSVProcessor | undefined>();
+  const [results, files, setFiles] = useCsvProcessor(csvWorker);
+  useStatePersistence({ files, results });
 
   const isLoading = results.some(result => result.isLoading);
   const data = results
@@ -32,6 +33,11 @@ function App() {
 
   function handleDeleteFile(file: File) {
     setFiles(prevFiles => prevFiles.filter(f => f.name !== file.name));
+  }
+
+  function handleClearAll() {
+    setFiles([]);
+    localStorage.removeItem('csvState');
   }
 
   return (
@@ -83,7 +89,7 @@ function App() {
                   variant={ButtonVariant.SECONDARY}
                   size="md"
                   text="Clear All"
-                  onClick={() => setFiles([])} />
+                  onClick={handleClearAll} />
               </div>
             ) : null}
           </section>

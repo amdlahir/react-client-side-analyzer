@@ -1,3 +1,5 @@
+import { SerializedCSVProcessor } from "./lib/utils/csvProcessor";
+
 export type DataType = 'string' | 'number'
 
 export type ColumnStats = {
@@ -19,3 +21,13 @@ export type Analysis = {
   fileName: string;
   columns: ColumnsMetadata;
 }
+
+export type DeserializedState = {
+  files: {
+    name: string;
+    size: number;
+    type: string;
+    lastModified: number;
+  }[];
+  processors: SerializedCSVProcessor[];
+};

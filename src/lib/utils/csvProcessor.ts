@@ -2,6 +2,13 @@ import { ColumnsMetadata } from "../../types";
 
 export type Status = 'pending' | 'processing' | 'complete' | 'cancelled' | 'error';
 
+export type SerializedCSVProcessor = {
+  id: string;
+  file: File;
+  stats: ColumnsMetadata;
+  status: Status;
+};
+
 export class CSVProcessor {
   private id: string
   private _status: Status = 'pending';
@@ -99,6 +106,31 @@ export class CSVProcessor {
       throw new Error('Worker is not initialized');
     }
     this.worker.terminate();
-    this.worker = undefined;
+  }
+
+  serialize(): SerializedCSVProcessor {
+    return {
+      id: this.id,
+      file: {
+        name: this.file.name,
+        size: this.file.size,
+        type: this.file.type,
+        lastModified: this.file.lastModified,
+      } as File,
+      stats: this.stats,
+      status: this.status,
+    };
+  }
+
+  static deserialize(
+    serialized: SerializedCSVProcessor,
+    file: File,
+    worker: Worker,
+  ): CSVProcessor {
+    const processor = new CSVProcessor(worker, file, () => {}, () => {}, () => {});
+    processor.id = serialized.id;
+    processor._status = serialized.status;
+    processor._stats = serialized.stats;
+    return processor;
   }
 }
