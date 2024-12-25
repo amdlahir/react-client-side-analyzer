@@ -19,9 +19,6 @@ export function ColumnStatsChart({ columnStats, onClose }: ColumnStatsChartProps
   const width = useResponsiveScreen();
   const isTablet = width > 768 && width < 1280;
 
-  console.log(width);
-  console.log(isTablet);
-
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
