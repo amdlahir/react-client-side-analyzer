@@ -64,4 +64,14 @@ describe('Application', () => {
       expect(screen.queryByText(colName)).not.toBeInTheDocument();
     })
   })
+
+  it('shoud render chart', async () => {
+    mocks.mockUseQueriesHook.mockReturnValue(mockResults);
+    render(<App />);
+    const viewStatsButtons = screen.getAllByText(/view stats/i);
+    await userEvent.click(viewStatsButtons[0]);
+    await userEvent.click(screen.getByText(/view chart/i));
+    expect(screen.getByText(/mean and standard deviation/i)).toBeInTheDocument();
+    expect(screen.getByRole('dialog')).toMatchSnapshot();
+  })
 })

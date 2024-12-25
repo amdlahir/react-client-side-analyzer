@@ -32,7 +32,7 @@ function App() {
       {selectedFile ?  (
         <React.Fragment>
           <div className={styles.screenOverlay} />
-          <div className={styles.chartContainer}>
+          <div className={styles.chartContainer} role="dialog">
             <ColumnStatsChart columnStats={selectedFile.stats} onClose={handleCloseChart} />
           </div>
         </React.Fragment>
